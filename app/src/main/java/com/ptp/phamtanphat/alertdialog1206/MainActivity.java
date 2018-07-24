@@ -23,29 +23,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
                 alertDialog.setTitle("Ban co muon tat hop thoai khong?");
-                alertDialog.setMessage("Hay xac nhan ben duoi");
+
                 alertDialog.setCancelable(false);
                 alertDialog.setIcon(R.mipmap.ic_launcher);
-                alertDialog.setPositiveButton("Co", new DialogInterface.OnClickListener() {
-                    @SuppressLint("NewApi")
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //Ket thuc ung dung
-                        finishAffinity();
-                    }
-                });
-                alertDialog.setNegativeButton("Khong", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(MainActivity.this, "Ban da chon Khong", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                alertDialog.setNeutralButton("Huy", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
 
+                final String[] mangten = {"Meo","Cho","Heo","Ga"};
+                boolean[] checked = {true,false,false,false};
+                alertDialog.setMultiChoiceItems(mangten, checked, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                        Toast.makeText(MainActivity.this, mangten[i], Toast.LENGTH_SHORT).show();
                     }
                 });
+
                 alertDialog.show();
             }
         });
